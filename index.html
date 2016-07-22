@@ -11,11 +11,73 @@
 </head>
 <body>
 	<div class="container">
-		<button class=""></button>
+		<button class="button">Choose Character</button>
+		<div id="charName"></div>
+		<div id="charImg"></div>
 
 	</div>
 
 	<!-- Game code -->
-	<script src="assets/javascript/game.js"></script>
+	<!-- <script src="assets/javascript/game.js"></script> -->
+	<script type="text/javascript">
+	/* ****************************************	*/
+	/* Array of character objects 				*/
+	/* ****************************************	*/
+	var characters = [
+		{
+			"name": "Black Widow",
+			"healthPoints": 100,
+			"attackPower": 12,
+			"counterAttackPower": 10,
+			"image": "assets/images/blackWidow.png",
+		},
+		{
+			"name": "Captain America",
+			"healthPoints": 180,
+			"attackPower": 10,
+			"counterAttackPower": 10,
+			"image": "assets/images/captainAmerica.png",
+		},
+		{
+			"name": "Ironman",
+			"healthPoints": 140,
+			"attackPower": 12,
+			"counterAttackPower": 14,
+			"image": "assets/images/ironMan.png",
+		},
+		{
+			"name": "Ant Man",
+			"healthPoints": 160,
+			"attackPower": 12,
+			"counterAttackPower": 16,
+			"image": "assets/images/antMan.png",
+		},
+	]
+	/* ****************************************	*/
+	/* JSON object containing game action		*/
+	/* methods 									*/
+	/* ****************************************	*/
+	var gameMethods = {
+
+		getCharName : function (index) {
+			return characters[index].name;
+		},
+		getCharImg : function (index) {
+			return characters[index].image;
+		},
+		createCharImgDivs : function (index) {
+			var img = $('<img>'); //Equivalent: $(document.createElement('img'))
+			
+			img.attr('src', this.getCharImg[index]);
+			img.appendTo('#charImg');
+			console.log("img", img);
+		}
+	}
+	$('.button').on('click', function() {
+		$('#charName').html(gameMethods.getCharName(1));
+	})
+	gameMethods.createCharImgDivs(1);
+
+	</script>
 </body>
 </html>
