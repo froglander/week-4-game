@@ -42,39 +42,22 @@
 	/* ****************************************	*/
 	var gameMethods = {
 		hasTarget : false,
-		myCurrentHero : "",
-		myCurrentTarget : "",
-		/* Returns character name, requires index value */
-		getCharName : function (index) {
-			return characters[index].name;
-		},
-		/* Returns character image, requires index value */
-		getCharImg : function (index) {
-			return characters[index].image;
-		},
+		myCurrentHero : "",		
 		/* Creates clickable image divs */
 		createCharImgDivs : function () {
 			var self = this;
 			$.each(characters, function (index) {
-				var div = $('<div>').addClass("image character").attr('id', index);;
-				var img = $('<img>');
-
-				img.attr('src', 'assets/images/' + index + '.png');
-				
-				//img.addClass("character " + characters[index].team);
-				img.addClass(characters[index].team);
+				var div = $('<div>').addClass("image character").attr('id', index);
+				var img = $('<img>').attr('src', 'assets/images/' + index + '.png').addClass(characters[index].team);
 
 				img.appendTo(div);
 				$('<h3>').html(characters[index].name + "<br />" + characters[index].healthPoints).appendTo(div);
-				//$('<h3>').html(characters[index].healthPoints).appendTo(div);
 				div.appendTo('#chooseCharacter');				
 			});
 		},
-		chooseHero : function(myHero) {
-			//var myChar = myHero;	// The image that I have clicked on		
+		chooseHero : function(myHero) {			
 			var self = this;
-			//console.log("myHero", myHero);
-			//console.log("myChar", myChar);
+
 			this.myCurrentHero = myHero.id;
 			$(myHero).remove();
 			$("#selectChar").hide();
@@ -98,7 +81,7 @@
 		},
 		chooseEnemy : function(myEnemy) {
 			var self = this;
-			//console.log(this.hasTarget);
+			
 			if (this.hasTarget) return;			
 
 			$(myEnemy).remove();
@@ -129,22 +112,23 @@
 			$("#heroAttack").html(characters[this.myCurrentHero].attackPower);
 
 			if(characters[myTarget.id].healthPoints <= 0 && characters[this.myCurrentHero].healthPoints > 0) {
-				$("#gameStatus").html("You won");
+				$("#gameStatus").html("Good job you beat " + characters[myTarget.id].name);
 				$(myTarget).removeClass("currentTarget").remove();
+				$(".currentStats").hide();
 				this.hasTarget = false;
+			} else if (characters[myTarget.id].healthPoints > 0 && characters[this.myCurrentHero].healthPoints <= 0) {
+				$("#gameStatus").html("Oh no! " + characters[myTarget.id].name + " beat you!");
+				$(myTarget).removeClass("currentTarget").remove();
+				$(".currentStats").hide();
 			}
-
 
 		}, 
 	}
 
-	//console.log(gameMethods.getCharImg(1));
 	gameMethods.createCharImgDivs();
-	//console.log("Line after createCharImgDivs");
-
+	
 	$(".character").on("click", function () {
 		gameMethods.chooseHero(this);
-		console.log(this);
 	});
 
 
