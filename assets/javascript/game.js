@@ -116,10 +116,23 @@
 				$(myTarget).removeClass("currentTarget").remove();
 				$(".currentStats").hide();
 				this.hasTarget = false;
+				if ($("#chooseEnemies").children().length == 0) {
+					$('<button>').addClass("btn btn-success")
+						.attr("type", "button").html("Play Again").appendTo($("#currentHeroStats").parent())
+						.on("click", function () {
+							location.reload();
+						});
+				}
+
 			} else if (characters[myTarget.id].healthPoints > 0 && characters[this.myCurrentHero].healthPoints <= 0) {
 				$("#gameStatus").html("Oh no! " + characters[myTarget.id].name + " beat you!");
 				$(myTarget).removeClass("currentTarget").remove();
 				$(".currentStats").hide();
+				$('<button>').addClass("btn btn-danger")
+					.attr("type", "button").html("Play Again").appendTo($("#currentHeroStats").parent())
+					.on("click", function () {
+						location.reload();
+					});
 			}
 
 		}, 
