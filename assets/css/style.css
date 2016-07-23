@@ -1,6 +1,12 @@
+body, html {
+	font-family: 'Mitr', sans-serif;	
+}
+body {
+	background-image: url("../images/background.jpg");
+}
 .character, .enemy, .currentTarget {
-	width: 200px;
-	height: 200px;	
+	width: 180px;
+	height: 180px;	
 	margin: 10px;
 	border-radius: 20px;
 	border: 1px solid #5d768e;
@@ -25,5 +31,28 @@
 }
 
 .box {
-	border: 1px solid red;
+	/*border: 1px solid red;*/
+}
+
+.hideOnStart {
+	display: none;
+}
+
+.currentStats {
+	display: none;
+	margin-top: 12px;
+	font-weight: 600;
+}
+#currentHeroStats {
+	display: none;
+	margin-top: 12px;
+	font-weight: 600;
+}
+h2 {
+	font-weight: 600;
+	/*background-color: rgba(40,96,144,0.4);*/
+	background-color: rgba(131, 101, 111, 0.69);
+	padding: 15px;
+	border-radius: 10px;
+	color: #fef5d8;
 }

@@ -78,13 +78,18 @@
 			//console.log("myChar", myChar);
 			this.myCurrentHero = myHero.id;
 			$(myHero).remove();
+			$("#selectChar").hide();
+			$("#currentHeroStats").show();
+
+			$("#heroHealth").html(characters[this.myCurrentHero].healthPoints);
+			$("#heroAttack").html(characters[this.myCurrentHero].attackPower);
+
+			$("#yourChar, #availEnemies").show();
 			$("#yourCharacter").append(myHero);
 
 			$("#chooseCharacter").children().each(function () {
 				var yourChar = this;
-				$(yourChar).removeClass("character");
-				$(yourChar).addClass("enemy");
-				$(yourChar).remove();
+				$(yourChar).removeClass("character").addClass("enemy").remove();
 				$("#chooseEnemies").append(yourChar);
 			});
 
@@ -94,33 +99,42 @@
 		},
 		chooseEnemy : function(myEnemy) {
 			var self = this;
-			console.log(this.hasTarget);
-			if (this.hasTarget) return;
+			//console.log(this.hasTarget);
+			if (this.hasTarget) return;			
 
 			$(myEnemy).remove();
+			$("#curTarget").show();
+
 			$("#myTarget").append($(myEnemy).addClass("currentTarget"));
 			this.hasTarget = true;
+
+			$(".currentStats").show();
+			$("#targetHealth").html(characters[myEnemy.id].healthPoints);
+			$("#targetAttack").html(characters[myEnemy.id].attackPower);
 
 			$(".currentTarget").on("click", function () {		
 				self.attackTarget(this);
 			});
 
 		},
-		attackTarget : function(myTarget) {			
-			//console.log("myTarget id", myTarget.id);
-			//console.log("myCurrentTarget", characters[myTarget.id]);
-			//this.myCurrentTarget = myTarget.id;
-
-			
-
+		attackTarget : function(myTarget) {	
 			characters[myTarget.id].healthPoints = characters[myTarget.id].healthPoints - characters[this.myCurrentHero].attackPower;
 			characters[this.myCurrentHero].attackPower += characters[this.myCurrentHero].baseAttack;
+			characters[this.myCurrentHero].healthPoints -= characters[myTarget.id].counterAttackPower;
 
-			// console.log("health", characters[this.myCurrentTarget].healthPoints);
-			// console.log("attack", characters[this.myCurrentHero].attackPower);
+			
+			$("#targetHealth").html(characters[myTarget.id].healthPoints);
+			$("#targetAttack").html(characters[myTarget.id].attackPower);
 
-			 console.log("myCurrentTarget", characters[myTarget.id]);
-			 console.log("myCurrentHero", characters[this.myCurrentHero]);
+			$("#heroHealth").html(characters[this.myCurrentHero].healthPoints);
+			$("#heroAttack").html(characters[this.myCurrentHero].attackPower);
+
+			if(characters[myTarget.id].healthPoints <= 0 && characters[this.myCurrentHero].healthPoints > 0) {
+				$("#gameStatus").html("You won");
+				$(myTarget).removeClass("currentTarget").remove();
+				this.hasTarget = false;
+			}
+
 
 		}, 
 	}
