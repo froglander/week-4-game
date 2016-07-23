@@ -14,10 +14,12 @@ body {
 
 .avengers {
 	background-image: url("../images/bg_avengers.png");
+	background-size: 180px 180px;
 }
 
 .hydra {
 	background-image: url("../images/bg_hydra.png");
+	background-size: 180px 180px;
 }
 
 .imgOverlay {
