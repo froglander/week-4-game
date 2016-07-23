@@ -1,0 +1,29 @@
+.character, .enemy, .currentTarget {
+	width: 200px;
+	height: 200px;	
+	margin: 10px;
+	border-radius: 20px;
+	border: 1px solid #5d768e;
+} 
+
+.avengers {
+	background-image: url("../images/bg_avengers.png");
+}
+
+.hydra {
+	background-image: url("../images/bg_hydra.png");
+}
+
+.imgOverlay {
+    background-color: #000;
+    bottom: 0;
+    color: #fff;
+    left: 0;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+}
+
+.box {
+	border: 1px solid red;
+}

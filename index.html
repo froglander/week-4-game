@@ -6,78 +6,54 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     
     <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-
+    <!-- Include jquery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<button class="button">Choose Character</button>
-		<div id="charName"></div>
-		<div id="charImg"></div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<h2>Select a character!</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<div id="chooseCharacter"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<h2>Your Character</h2>				
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<div id="yourCharacter"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<h2>Enemies available to attack</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<div id="chooseEnemies"></div>
+			</div>
+		</div>
+				<div class="row">
+			<div class="col-sm-12 box">
+				<h2>Current Target</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 box">
+				<div id="myTarget"></div>
+			</div>
+		</div>
 
-	</div>
 
-	<!-- Game code -->
-	<!-- <script src="assets/javascript/game.js"></script> -->
-	<script type="text/javascript">
-	/* ****************************************	*/
-	/* Array of character objects 				*/
-	/* ****************************************	*/
-	var characters = [
-		{
-			"name": "Black Widow",
-			"healthPoints": 100,
-			"attackPower": 12,
-			"counterAttackPower": 10,
-			"image": "assets/images/blackWidow.png",
-		},
-		{
-			"name": "Captain America",
-			"healthPoints": 180,
-			"attackPower": 10,
-			"counterAttackPower": 10,
-			"image": "assets/images/captainAmerica.png",
-		},
-		{
-			"name": "Ironman",
-			"healthPoints": 140,
-			"attackPower": 12,
-			"counterAttackPower": 14,
-			"image": "assets/images/ironMan.png",
-		},
-		{
-			"name": "Ant Man",
-			"healthPoints": 160,
-			"attackPower": 12,
-			"counterAttackPower": 16,
-			"image": "assets/images/antMan.png",
-		},
-	]
-	/* ****************************************	*/
-	/* JSON object containing game action		*/
-	/* methods 									*/
-	/* ****************************************	*/
-	var gameMethods = {
-
-		getCharName : function (index) {
-			return characters[index].name;
-		},
-		getCharImg : function (index) {
-			return characters[index].image;
-		},
-		createCharImgDivs : function (index) {
-			var img = $('<img>'); //Equivalent: $(document.createElement('img'))
-			
-			img.attr('src', this.getCharImg[index]);
-			img.appendTo('#charImg');
-			console.log("img", img);
-		}
-	}
-	$('.button').on('click', function() {
-		$('#charName').html(gameMethods.getCharName(1));
-	})
-	gameMethods.createCharImgDivs(1);
-
-	</script>
+	<!-- Game code -->	
+	<script src="assets/javascript/game.js"></script>
 </body>
 </html>
