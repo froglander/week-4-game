@@ -15,11 +15,18 @@ body {
 .avengers {
 	background-image: url("../images/bg_avengers.png");
 	background-size: 180px 180px;
+	width: 180px;
+	height: 180px;		
+	border-radius: 20px;	
 }
 
 .hydra {
 	background-image: url("../images/bg_hydra.png");
 	background-size: 180px 180px;
+
+	width: 180px;
+	height: 180px;		
+	border-radius: 20px;	
 }
 
 .imgOverlay {
@@ -57,4 +64,21 @@ h2 {
 	padding: 15px;
 	border-radius: 10px;
 	color: #fef5d8;
+}
+.image { 
+   position: relative; 
+   float: left;
+
+}
+
+.image h3 { 
+   position: absolute; 
+   top: 121px; 
+   left: 0;
+   font-size: 16px;   
+   background-color: rgba(251, 244, 234, 0.55);
+   padding: 2px 2px 2px 4px; 
+   width: 137px;  
+   text-align: center;
+   border-radius: 0px 0px 0px 20px;
 }

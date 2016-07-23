@@ -28,7 +28,7 @@
 				"team": "hydra"
 			},
 			"vonStrucker" : {
-				"name": "Baron Von Strucker",
+				"name": "Von Strucker",
 				"healthPoints": 160,
 				"attackPower": 16,
 				"baseAttack": 16,
@@ -56,19 +56,18 @@
 		createCharImgDivs : function () {
 			var self = this;
 			$.each(characters, function (index) {
-				//console.log(index);
-				//console.log(characters[index].name);
-
+				var div = $('<div>').addClass("image character").attr('id', index);;
 				var img = $('<img>');
+
 				img.attr('src', 'assets/images/' + index + '.png');
-				img.attr('id', index);
-				img.addClass("character " + characters[index].team);
-				img.appendTo('#chooseCharacter');
-				// var imgName = $('<div>');
-				// imgName.addClass("imgOverlay");
-				// console.log("imgName", imgName);
-				// imgName.html(self.getCharName(index));
-				// imgName.appendTo('#charImg');				
+				
+				//img.addClass("character " + characters[index].team);
+				img.addClass(characters[index].team);
+
+				img.appendTo(div);
+				$('<h3>').html(characters[index].name + "<br />" + characters[index].healthPoints).appendTo(div);
+				//$('<h3>').html(characters[index].healthPoints).appendTo(div);
+				div.appendTo('#chooseCharacter');				
 			});
 		},
 		chooseHero : function(myHero) {
@@ -145,6 +144,7 @@
 
 	$(".character").on("click", function () {
 		gameMethods.chooseHero(this);
+		console.log(this);
 	});
 
 
