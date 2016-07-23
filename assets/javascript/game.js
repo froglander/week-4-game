@@ -9,7 +9,6 @@
 				"attackPower": 10,
 				"baseAttack": 10,
 				"counterAttackPower": 10,
-				"image": "assets/images/blackWidow.png",
 				"team": "avengers"
 			},
 			"captainAmerica" : {
@@ -18,7 +17,6 @@
 				"attackPower": 18,
 				"baseAttack": 18,
 				"counterAttackPower": 18,
-				"image": "assets/images/captainAmerica.png",				
 				"team": "avengers"
 			},
 			"redSkull" : {
@@ -27,7 +25,6 @@
 				"attackPower": 14,
 				"baseAttack": 14,
 				"counterAttackPower": 14,
-				"image": "assets/images/redSkull.png",
 				"team": "hydra"
 			},
 			"vonStrucker" : {
@@ -35,8 +32,7 @@
 				"healthPoints": 160,
 				"attackPower": 16,
 				"baseAttack": 16,
-				"counterAttackPower": 16,
-				"image": "assets/images/vonStrucker.png",
+				"counterAttackPower": 16,				
 				"team": "hydra"
 			},
 	}
@@ -64,7 +60,7 @@
 				//console.log(characters[index].name);
 
 				var img = $('<img>');
-				img.attr('src', characters[index].image);
+				img.attr('src', 'assets/images/' + index + '.png');
 				img.attr('id', index);
 				img.addClass("character " + characters[index].team);
 				img.appendTo('#chooseCharacter');
